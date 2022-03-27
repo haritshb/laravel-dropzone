@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UploadImagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+Route::get('/', [UploadImagesController::class, 'create']);
+Route::post('/images-save', [UploadImagesController::class, 'store']);
+Route::post('/images-delete', [UploadImagesController::class, 'destroy']);
+Route::get('/images-show', [UploadImagesController::class, 'index']);
